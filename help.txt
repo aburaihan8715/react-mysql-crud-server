@@ -1,0 +1,18 @@
+## react-mysql-crud-server
+
+### =========references===========
+-tutorials
+https://www.youtube.com/watch?v=fPuLnzSjPLE&t=1189s
+
+### features/actions
+1.  CRUD operations
+
+### technologies used
+1.  node js
+2.  mysql database
+
+### completed tasks
+1.  CRUD operations
+
+### pending tasks
+1.  deployment somewhere
