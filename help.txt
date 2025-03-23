@@ -16,3 +16,13 @@ https://www.youtube.com/watch?v=fPuLnzSjPLE&t=1189s
 
 ### pending tasks
 1.  deployment somewhere
+
+
+
+=======Table=======
+
+books
+id
+title
+desc
+cover

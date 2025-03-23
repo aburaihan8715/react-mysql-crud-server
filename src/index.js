@@ -1,24 +1,35 @@
 import express from "express";
-const app = express();
-import "dotenv/config";
-import mysql from "mysql";
 import cors from "cors";
-const port = process.env.SERVER_PORT || 5001;
+import mysql from "mysql";
+import dotenv from "dotenv";
+import morgan from "morgan";
+
+// allow to access .env variables
+dotenv.config();
+
+// app start here
+const app = express();
 
 // middleware
 app.use(express.json());
 app.use(cors());
+if (process.env.NODE_ENV === "development") {
+  app.use(morgan("dev"));
+}
 
 const db = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "password",
-  database: "react_crud_mysql_book",
+  database: "mysql_book_list",
 });
 
-// home route
+// GET Test route
 app.get("/", (req, res) => {
-  res.send({ message: "Hello from server" });
+  res.status(200).json({
+    success: true,
+    message: "Hello from book list server!!",
+  });
 });
 
 // post book
@@ -75,12 +86,14 @@ app.put("/books/:id", (req, res) => {
 app.use((req, res, next) => {
   res.send({ message: "route not found" });
 });
+
 // server error
 app.get((err, req, res, next) => {
   res.send({ message: "server error" });
 });
 
 // =====server running here =====
+const port = process.env.PORT || 5001;
 app.listen(port, () => {
   console.log(`app listening on port http://localhost:${port}`);
 });
